@@ -1,4 +1,4 @@
-﻿namespace Sharedien.Riversand
+﻿namespace AdvRsJson
 {
     /// <summary>
     /// Various constants used within the Rs* classes

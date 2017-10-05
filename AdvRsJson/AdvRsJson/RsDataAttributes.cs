@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Sharedien.Riversand
+namespace AdvRsJson
 {
     class RsDataAttributes
     {

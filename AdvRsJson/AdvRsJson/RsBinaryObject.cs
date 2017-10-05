@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Sharedien.Riversand
+namespace AdvRsJson
 {
-    class RsBinaryObject : RsJsonBase
+    public class RsBinaryObject : RsJsonBase
     {
         public Dictionary<string, object> binaryObject = new Dictionary<string, object>();
         private RsDataBlob data = new RsDataBlob();

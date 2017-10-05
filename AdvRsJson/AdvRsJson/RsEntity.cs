@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sharedien.Riversand
+namespace AdvRsJson
 {
-    class RsEntity : RsJsonBase
+    public class RsEntity : RsJsonBase
     {
         public Dictionary<string, object> entity = new Dictionary<string, object>();
         private RsDataAttributes data = new RsDataAttributes();

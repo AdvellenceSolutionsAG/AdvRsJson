@@ -1,4 +1,4 @@
-﻿namespace Sharedien.Riversand
+﻿namespace AdvRsJson
 {
     class RsValue
     {
