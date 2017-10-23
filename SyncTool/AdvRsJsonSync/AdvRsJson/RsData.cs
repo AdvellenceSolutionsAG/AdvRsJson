@@ -63,8 +63,15 @@ namespace AdvRsJson
         [JsonProperty("blob", NullValueHandling = NullValueHandling.Ignore, Order = 3)]
         public string Blob { get { return _blob; } private set { } }
 
-
-
-
+        /// <summary>
+        /// Get Attribute by shortname. Return empty RsAttribute object. Returns always only one object.
+        /// </summary>
+        /// <param name="attributename"></param>
+        /// <returns></returns>
+        public KeyValuePair<string, RsAttribute> GetAttribute(string attributename)
+        {            
+            return SelfContextAttributes.FirstOrDefault(w => w.Key.Equals(attributename));
+            
+        }
     }
 }
