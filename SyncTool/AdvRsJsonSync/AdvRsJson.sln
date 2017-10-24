@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestAdvRsJson", "UnitTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvRsJson", "AdvRsJson\AdvRsJson.csproj", "{FAC91C3F-BBC3-4D11-AAC3-6809A3572349}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RsJsonConsole", "RsJsonConsole\RsJsonConsole.csproj", "{F4D66E43-9A63-438C-826F-50E86FC94E32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FAC91C3F-BBC3-4D11-AAC3-6809A3572349}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAC91C3F-BBC3-4D11-AAC3-6809A3572349}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAC91C3F-BBC3-4D11-AAC3-6809A3572349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D66E43-9A63-438C-826F-50E86FC94E32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D66E43-9A63-438C-826F-50E86FC94E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D66E43-9A63-438C-826F-50E86FC94E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D66E43-9A63-438C-826F-50E86FC94E32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

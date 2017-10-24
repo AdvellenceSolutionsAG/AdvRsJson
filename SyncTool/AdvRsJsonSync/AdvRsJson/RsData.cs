@@ -73,5 +73,11 @@ namespace AdvRsJson
             return SelfContextAttributes.FirstOrDefault(w => w.Key.Equals(attributename));
             
         }
+
+        public Dictionary<string, RsAttribute> GetListofAttribute(List<string> attributenames)
+        {
+            return SelfContextAttributes.Where(w => attributenames.Any(s=>s.Equals(w.Key))).ToDictionary(d=>d.Key, c=>c.Value);
+
+        }
     }
 }
