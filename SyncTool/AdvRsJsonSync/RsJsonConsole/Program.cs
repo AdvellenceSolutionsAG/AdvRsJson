@@ -11,7 +11,7 @@ namespace RsJsonConsole
         static void Main(string[] args)
         {
 
-            Serialzer ser = new Serialzer();
+            Serializer ser = new Serializer();
             ser.Serialize();
         }
     }

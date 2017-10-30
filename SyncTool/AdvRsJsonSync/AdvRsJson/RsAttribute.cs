@@ -35,8 +35,9 @@ namespace AdvRsJson
 
 
         [JsonProperty("group",NullValueHandling = NullValueHandling.Ignore)]
-        public Dictionary<string, RsAttribute> Group { get; set; }
+        public List<Dictionary<string, RsAttribute>> Group { get; set; }
 
+        
         [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
         public List<RsValue> AttributeValues { get; set; }
 
@@ -63,12 +64,21 @@ namespace AdvRsJson
             IsChild = false;
         }
 
-        public void AddChild(string name, RsAttribute value)
+        //public void AddChild(string name, RsAttribute value)
+        //{
+        //    InnerGroup = (InnerGroup == null) ? new Dictionary<string, RsAttribute>() : InnerGroup;
+        //    InnerGroup.Add(name, value);
+        //    IsChild = true;
+        //    IsNested = false;
+        //}
+
+        public void AddNestedAttributeRow(Dictionary<string, RsAttribute> dict)
         {
-            Group = (Group == null) ? new Dictionary<string, RsAttribute>() : Group;
-            Group.Add(name, value);
+            Group = (Group == null) ? new List<Dictionary<string, RsAttribute>>() : Group;
+            Group.Add(dict);
             IsChild = true;
             IsNested = false;
+
         }
         
 

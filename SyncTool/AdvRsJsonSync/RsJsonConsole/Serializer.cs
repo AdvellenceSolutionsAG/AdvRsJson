@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace RsJsonConsole
 {
-    public class Serialzer
+    public class Serializer
     {
         public void Serialize()
         {
             RsEntity rsentity = new RsEntity();
             rsentity.Id = "e1";
-            rsentity.Type = RsEntity.EntityType.enart.ToString();
+            rsentity.Type = "enart";
             rsentity.Properties = new RsProperties
             {
                 Source = "plm",
@@ -32,9 +32,7 @@ namespace RsJsonConsole
             inci.AddValue(new RsValue("Wasser", "d2p", "de_DE"));
 
 
-            RsAttribute hair = new RsAttribute(true);
-            hair.AddChild("hairtext", new RsAttribute(new RsValue("Scalp", "CRM", "en_WW")));
-            hair.AddChild("hairrank", new RsAttribute(new RsValue("1", "CRM", "en_WW")));
+        
 
             RsRelationship relation = new RsRelationship();
             relation.AddRelationshipAttribute("amount", new RsAttribute("1"));
@@ -55,7 +53,6 @@ namespace RsJsonConsole
 
 
             rsentity.Data.AddAttributes("inci", inci);
-            rsentity.Data.AddAttributes("hair", hair);
 
             string jsonpre = Newtonsoft.Json.JsonConvert.SerializeObject(rsentity);
 

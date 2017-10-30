@@ -11,11 +11,50 @@ namespace AdvRsJson
             this.Locale = loc;
         }
 
-        [JsonProperty("value")]
+
+        public RsValue(string val, string loc)
+        {
+            this.Value = val;
+            this.Locale = loc;
+        }
+
+        public RsValue(string val, string loc, string sou, string unitofm)
+        {
+            this.Value = val;
+            this.Source = sou;
+            this.Locale = loc;
+            this.Uom = unitofm;
+        }
+
+        public RsValue(string val, string loc, string sou, string unitofm, float tmpstmp)
+        {
+            this.Value = val;
+            this.Source = sou;
+            this.Locale = loc;
+            this.Uom = unitofm;
+            this.Timestamp = tmpstmp;
+        }
+
+        public RsValue(string val, string loc, string sou,float tmpstmp)
+        {
+            this.Value = val;
+            this.Source = sou;
+            this.Locale = loc;            
+            this.Timestamp = tmpstmp;
+        }
+
+
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore, Order = 1)]
         public string Value { get; set; }
-        [JsonProperty("source")]
+        [JsonProperty("source", NullValueHandling = NullValueHandling.Ignore, Order = 2)]
         public string Source { get; set; }
-        [JsonProperty("locale")]
+        [JsonProperty("locale", NullValueHandling = NullValueHandling.Ignore, Order = 3)]
         public string Locale { get; set; }
+        [JsonProperty("uom", NullValueHandling = NullValueHandling.Ignore, Order = 4)]
+        public string Uom { get; set; }
+        [JsonProperty("timestamp", NullValueHandling = NullValueHandling.Ignore, Order = 4)]
+        public float Timestamp { get; set; }
+
+
     }
 }

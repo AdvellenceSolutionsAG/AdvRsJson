@@ -55,13 +55,11 @@
     <Compile Include="RsAttribute.cs" />
     <Compile Include="RsContext.cs" />
     <Compile Include="RsData.cs" />
-    <Compile Include="RsDataBlob.cs" />
     <Compile Include="RsEntity.cs" />
     <Compile Include="RsProperties.cs" />
     <Compile Include="RsRelationship.cs" />
     <Compile Include="RsRelTo.cs" />
     <Compile Include="RsValue.cs" />
-    <Compile Include="Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

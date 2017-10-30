@@ -16,7 +16,7 @@ namespace UnitTestAdvRsJson
 
             RsEntity rsentity = new RsEntity();
             rsentity.Id = "e1";
-            rsentity.Type = RsEntity.EntityType.enart.ToString();
+            rsentity.Type = "enart";
             rsentity.Properties = new RsProperties
             {
                 Source = "plm",
@@ -36,8 +36,39 @@ namespace UnitTestAdvRsJson
 
 
             RsAttribute hair = new RsAttribute(true);
-            hair.AddChild("hairtext", new RsAttribute(new RsValue("Scalp", "CRM", "en_WW")));
-            hair.AddChild("hairrank", new RsAttribute(new RsValue("1", "CRM", "en_WW")));
+
+            Dictionary<string, RsAttribute> firstentry = new Dictionary<string, RsAttribute>();
+            firstentry.Add("hairtext", new RsAttribute(new RsValue("Scalp1", "CRM", "en_WW")));
+            firstentry.Add("hairrank", new RsAttribute(new RsValue("1", "CRM", "en_WW")));
+
+            Dictionary<string, RsAttribute> secondtentry = new Dictionary<string, RsAttribute>();
+            secondtentry.Add("hairtext", new RsAttribute(new RsValue("Scalp2", "CRM", "en_WW")));
+            secondtentry.Add("hairrank", new RsAttribute(new RsValue("2", "CRM", "en_WW")));
+
+            Dictionary<string, RsAttribute> thirdentry = new Dictionary<string, RsAttribute>();
+            thirdentry.Add("hairtext", new RsAttribute(new RsValue("Scalp3", "CRM", "en_WW")));
+            thirdentry.Add("hairrank", new RsAttribute(new RsValue("3", "CRM", "en_WW")));
+
+            hair.AddNestedAttributeRow(firstentry);
+            hair.AddNestedAttributeRow(secondtentry);
+            hair.AddNestedAttributeRow(thirdentry);
+
+
+
+
+            //RsAttribute hair1 = new RsAttribute(true);
+            //hair1.AddChild("hairtext", new RsAttribute(new RsValue("Scalp", "CRM", "en_WW")));
+            //hair1.AddChild("hairrank", new RsAttribute(new RsValue("1", "CRM", "en_WW")));
+
+            //RsAttribute hair2 = new RsAttribute(true);
+            //hair2.AddChild("hairtext", new RsAttribute(new RsValue("Scalp", "CRM", "en_WW")));
+            //hair2.AddChild("hairrank", new RsAttribute(new RsValue("1", "CRM", "en_WW")));
+
+            //RsAttribute hair3 = new RsAttribute(true);
+            //hair3.AddChild("hairtext", new RsAttribute(new RsValue("Scalp", "CRM", "en_WW")));
+            //hair3.AddChild("hairrank", new RsAttribute(new RsValue("1", "CRM", "en_WW")));
+
+
 
             RsRelationship relation = new RsRelationship();
             relation.AddRelationshipAttribute("amount", new RsAttribute("1"));
@@ -74,7 +105,7 @@ namespace UnitTestAdvRsJson
         public void TestMethodCreateBinaryObject()
         {
             RsEntity entity = new RsEntity();
-            entity.Type = RsEntity.EntityType.image.ToString();
+            entity.Type = "enart";
             entity.Id = Guid.NewGuid().ToString();
             entity.Properties = new RsProperties
             {

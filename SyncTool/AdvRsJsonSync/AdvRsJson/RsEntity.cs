@@ -13,10 +13,10 @@ namespace AdvRsJson
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
-        [JsonProperty("Name",NullValueHandling = NullValueHandling.Ignore)]        
+        [JsonProperty("name",NullValueHandling = NullValueHandling.Ignore)]        
         public string Name { get; set; }
 
-        [JsonProperty("Version",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("version",NullValueHandling = NullValueHandling.Ignore)]
         public string Version { get; set; }
 
         [JsonProperty("type",NullValueHandling = NullValueHandling.Ignore)]
@@ -30,17 +30,7 @@ namespace AdvRsJson
 
         [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
         public string[] Tags { get; set; }
-
-        
-
-
-        public enum EntityType
-        {
-            enart,
-            eproductversion,
-            image
-
-        }
+     
 
     }
 }
