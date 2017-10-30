@@ -23,7 +23,7 @@ namespace AdvRsJson
         public void AddImageFromStream( Stream stream )
         {
             // The stream can be null, for example when it is to be marked for deletion
-            if (stream != null) return;
+            if (stream == null) return;
 
             byte[] inArray = new byte[(int)stream.Length];
             stream.Read(inArray, 0, (int)stream.Length);
