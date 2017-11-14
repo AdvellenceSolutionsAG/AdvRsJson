@@ -19,8 +19,8 @@ namespace AdvRsJson
         public RsAttribute(string value, string source = "internal", string locale = "en-US")
         {
             AddValue(new RsValue(
-                source = source,
                 value = value,
+                source = source,                
                 locale = locale));
             IsNested = false;
         }
