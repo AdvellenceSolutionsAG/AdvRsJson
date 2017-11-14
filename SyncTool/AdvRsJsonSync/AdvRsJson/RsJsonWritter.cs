@@ -7,23 +7,30 @@ using System.Threading.Tasks;
 
 namespace AdvRsJson
 {
-    public class RsJsonWritter
+    public static class RsJsonWritter
     {
 
-        public string Entity { set; get; }
+        public static string Entity { set; get; }
 
-        public string Entities { set; get; }
-
-
-        public string SerializeRsEntity(RsEntity rsentity) => JsonConvert.SerializeObject(rsentity);
+        public static string Entities { set; get; }
 
 
-        public RsEntity DeserializeRsEntity(string json)
+        public static string SerializeRsEntity(RsEntity rsentity) => JsonConvert.SerializeObject(rsentity);
+
+        public static string SerializeRsBlob(RsBlob rsentity) => JsonConvert.SerializeObject(rsentity);
+
+
+        public static RsEntity DeserializeRsEntity(string json)
         {
            return JsonConvert.DeserializeObject<AdvRsJson.RsEntity>(json);
         }
 
-        public object SerializeRsEntity(object jsonroot) => JsonConvert.SerializeObject(jsonroot);
+        public static RsBlob DeserializeRsBlob(string json)
+        {
+            return JsonConvert.DeserializeObject<AdvRsJson.RsBlob>(json);
+        }
+
+        public static object SerializeRsEntity(object jsonroot) => JsonConvert.SerializeObject(jsonroot);
 
     }
 }

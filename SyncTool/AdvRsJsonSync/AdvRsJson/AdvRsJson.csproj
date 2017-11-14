@@ -53,9 +53,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RsAttribute.cs" />
+    <Compile Include="RsBase.cs" />
+    <Compile Include="RsBlob.cs" />
+    <Compile Include="RsBlobProperties.cs" />
     <Compile Include="RsContext.cs" />
     <Compile Include="RsData.cs" />
     <Compile Include="RsEntity.cs" />
+    <Compile Include="RsEntityProperties.cs" />
     <Compile Include="RsJsonWritter.cs" />
     <Compile Include="RsProperties.cs" />
     <Compile Include="RsRelationship.cs" />

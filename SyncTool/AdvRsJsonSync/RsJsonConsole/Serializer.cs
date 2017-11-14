@@ -14,7 +14,7 @@ namespace RsJsonConsole
             RsEntity rsentity = new RsEntity();
             rsentity.Id = "e1";
             rsentity.Type = "enart";
-            rsentity.Properties = new RsProperties
+            rsentity.Properties = new RsEntityProperties
             {
                 Source = "plm",
                 CreatedByService = "plm",
@@ -52,16 +52,7 @@ namespace RsJsonConsole
             // context.AddContextAttributes("general6", new RsAttribute("hello6", "internal", "de-DE"));
 
 
-            rsentity.Data.AddAttributes("inci", inci);
-
-            string jsonpre = Newtonsoft.Json.JsonConvert.SerializeObject(rsentity);
-
-            var jsonroot = new
-            {
-                entity = rsentity,
-            };
-
-            string json = Newtonsoft.Json.JsonConvert.SerializeObject(jsonroot);
+            rsentity.Data.AddAttributes("inci", inci);      
         }
     }
 }
