@@ -1,11 +1,12 @@
-﻿using AdvRsJson;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace UnitTestAdvRsJson
 {
+    using AdvRsJson;
+
     [TestClass]
     public class UnitTest1
     {
@@ -102,23 +103,35 @@ namespace UnitTestAdvRsJson
             var convert = RsJsonWritter.DeserializeRsEntity(json.ToString());
         }
 
-
         [TestMethod]
         public void TestMethodCreateBinaryObject()
         {
-            RsBlob entity = new RsBlob();
-            entity.Type = "enart";
-            entity.Id = Guid.NewGuid().ToString();
-            entity.Properties = new RsBlobProperties
+            RsJson rsjson = new RsJson(RsJson.RsJsonBinaryObject, null, Guid.NewGuid().ToString());
+            RsJsonBinaryObject binaryObject = rsjson.BinaryObject;
+
+            binaryObject.Properties = new RsBinaryObjectProperties()
             {
-               Encoding = "UTF-8",
-               Filename = "Test.jpg",
-               ProfileId = "12",
-               ProfileName = "MAM Import",
-               UserId = "Adv"
+                Encoding = "UTF-8",
+                Filename = "test.png"
             };
-            entity.Data.AddImageFromString("ew0KICAgImlkIjogIjEiLA");
-            string json = RsJsonWritter.SerializeRsBlob(entity);
+
+            binaryObject.Data.AddImageFromString("ew0KICAgImlkIjogIjEiLAew0KICAgImlkIjogIjEiLA");
+
+            string json2 = RsJsonWritter.SerializeRsBlob(rsjson);
+
+            //RsBlob entity = new RsBlob();
+            //entity.Type = "imagerendition";
+            //entity.Id = Guid.NewGuid().ToString();
+            //entity.Properties = new RsBinaryObjectProperties
+            //{
+            //   Encoding = "UTF-8",
+            //   Filename = "Test.jpg",
+            //   ProfileId = "12",
+            //   ProfileName = "MAM Import",
+            //   UserId = "Adv"
+            //};
+            //entity.Data.AddImageFromString("ew0KICAgImlkIjogIjEiLA");
+            //string json = RsJsonWritter.SerializeRsBlob(entity);
         }
 
         [TestMethod]

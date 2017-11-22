@@ -11,6 +11,7 @@
         public const string BASE_DATA = "data";
 
         // Types
+        public const string TYPE_ENTITY = "entity";
         public const string TYPE_IMAGE = "image";
         public const string TYPE_RENDITION = "imagerendition";
 

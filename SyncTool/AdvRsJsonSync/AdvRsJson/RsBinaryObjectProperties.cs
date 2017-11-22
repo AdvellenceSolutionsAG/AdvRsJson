@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace AdvRsJson
 {
-    public class RsBlobProperties
+    public class RsBinaryObjectProperties
     {
-
-
         [JsonProperty("profileName", NullValueHandling = NullValueHandling.Ignore, Order = 1)]
         public string ProfileName { get; set; }
 
@@ -25,6 +23,5 @@ namespace AdvRsJson
 
         [JsonProperty("filename", NullValueHandling = NullValueHandling.Ignore, Order = 5)]
         public string Filename { get; set; }
-
     }
 }

@@ -14,11 +14,11 @@ namespace AdvRsJson
 
         public static string Entities { set; get; }
 
+        public static string SerializeRsBlob(RsJson rsjson) => JsonConvert.SerializeObject(rsjson);
 
         public static string SerializeRsEntity(RsEntity rsentity) => JsonConvert.SerializeObject(rsentity);
 
         public static string SerializeRsBlob(RsBlob rsentity) => JsonConvert.SerializeObject(rsentity);
-
 
         public static RsEntity DeserializeRsEntity(string json)
         {
