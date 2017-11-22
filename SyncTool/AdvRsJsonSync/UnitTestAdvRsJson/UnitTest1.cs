@@ -1,12 +1,11 @@
-﻿using AdvRsJson;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace UnitTestAdvRsJson
 {
-    using AdvRsJson.V2;
+    using AdvRsJson;
 
     [TestClass]
     public class UnitTest1
