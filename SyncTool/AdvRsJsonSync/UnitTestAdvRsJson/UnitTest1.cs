@@ -73,6 +73,7 @@ namespace UnitTestAdvRsJson
             
 
             RsContext context = new RsContext();
+            context.ContextName = new Dictionary<string, string> { {"Country", "Germany" } };
             context.AddContextAttributes("general", new RsAttribute("hello", "internal", "de-DE"));
             context.AddContextAttributes("general1", new RsAttribute("hello1", "internal", "de-DE"));
             context.AddContextAttributes("general2", new RsAttribute("hello2", "internal", "de-DE"));
@@ -83,6 +84,12 @@ namespace UnitTestAdvRsJson
 
             rsentity.Data.AddAttributes("inci", inci);
             rsentity.Data.AddAttributes("hair", hair);
+
+
+            
+
+
+            rsentity.Data.AddContext(new List<RsContext> { context});
 
             var jsonpre = RsJsonWritter.SerializeRsEntity(rsentity);
 

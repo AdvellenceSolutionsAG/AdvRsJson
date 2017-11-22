@@ -8,7 +8,7 @@ namespace AdvRsJson
 
 
         [JsonProperty("context", NullValueHandling = NullValueHandling.Ignore, Order = 1)]
-        public string ContextName { get; set; }
+        public Dictionary<string, string> ContextName { get; set; }
 
         [JsonProperty("attributes", NullValueHandling = NullValueHandling.Ignore, Order = 2)]
         public Dictionary<string, RsAttribute> ContextAttributes { get; set; }

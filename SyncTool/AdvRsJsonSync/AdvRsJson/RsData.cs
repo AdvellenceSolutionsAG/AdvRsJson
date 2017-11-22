@@ -20,7 +20,7 @@ namespace AdvRsJson
         public Dictionary<string, List<RsRelationship>> SelfContextRelationships { get; set; }
 
         [JsonProperty("contexts", NullValueHandling = NullValueHandling.Ignore, Order = 3)]
-        public Dictionary<string, RsContext> Contexts { get; set; }
+        public List<RsContext> Contexts { get; set; }
 
         [JsonProperty("blob", NullValueHandling = NullValueHandling.Ignore, Order = 3)]
         public string Blob { get { return _blob; } private set { } }
@@ -38,12 +38,12 @@ namespace AdvRsJson
             SelfContextRelationships.Add(name, relation);
         }
 
-        public void AddContext(string contextname, RsContext context)
+        public void AddContext(List<RsContext> liscontext)
         {
-            Contexts = (Contexts == null) ? new Dictionary<string, RsContext>() : Contexts;
-            Contexts.Add(contextname, context);
+            Contexts = (Contexts == null) ? new List<RsContext>() : Contexts;
+            Contexts.AddRange(liscontext);
 
-        }
+        } 
 
         public void AddImageFromStream(Stream stream)
         {
