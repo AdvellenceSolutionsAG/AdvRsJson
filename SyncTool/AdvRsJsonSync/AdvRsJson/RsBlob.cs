@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace AdvRsJson
 {
-    public class RsBlob : RsBase
+    public class RsBlob : RsJsonBase
     {
         [JsonProperty("properties", NullValueHandling = NullValueHandling.Ignore)]
-        public RsBlobProperties Properties { get; set; }
+        public RsBinaryObjectProperties Properties { get; set; }
 
     }
 }
