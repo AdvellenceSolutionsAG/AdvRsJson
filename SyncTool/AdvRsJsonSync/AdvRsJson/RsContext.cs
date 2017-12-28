@@ -12,8 +12,8 @@ namespace AdvRsJson
 
         [JsonProperty("attributes", NullValueHandling = NullValueHandling.Ignore, Order = 2)]
         public Dictionary<string, RsAttribute> ContextAttributes { get; set; }
-        [JsonProperty("relations",NullValueHandling = NullValueHandling.Ignore, Order = 3)]
-        public Dictionary<string, RsRelationship> ContextRelations { get; set; }
+        [JsonProperty("relationships", NullValueHandling = NullValueHandling.Ignore, Order = 3)]
+        public Dictionary<string, List<RsRelationship>> ContextRelations { get; set; }
 
 
         public void AddContextAttributes(string name, RsAttribute attribute)
@@ -22,10 +22,10 @@ namespace AdvRsJson
             ContextAttributes.Add(name, attribute);
         }
 
-        public void AddContextRelations(string name, RsRelationship relation)
+        public void AddContextRelations(string name, List<RsRelationship> relationsList)
         {
-            ContextRelations = ContextRelations == null ? new Dictionary<string, RsRelationship>() : ContextRelations;
-            ContextRelations.Add(name, relation);
+            ContextRelations = ContextRelations == null ? new Dictionary<string, List<RsRelationship>>() : ContextRelations;
+            ContextRelations.Add(name, relationsList);
         }
 
         public void AddContext(string contextname, string contextvalue)

@@ -182,6 +182,24 @@ namespace UnitTestAdvRsJson
             rsentity.Data.AddAttributes("inci", inci);
             rsentity.Data.AddAttributes("hair", hair);
 
+
+            // context relatated Relation 
+            RsRelationship contxtrelation = new RsRelationship();
+            contxtrelation.RelationshipId = "53w_1238193919823";
+            contxtrelation.RelationProperties = new RsRelationshipsProperties
+            {
+                RelationShipType = RsRelationshipsProperties.Type.composition.ToString(),
+                RelationShipDirection = RsRelationshipsProperties.Direction.both.ToString(),
+
+            };
+            contxtrelation.RelationTo = new RsRelTo
+            {
+                EntityType = "image",
+                Id = "Sharedien-Meta-15515"
+            };
+
+            context.AddContextRelations("hasimagescombination", new List<RsRelationship> { contxtrelation });
+
             rsentity.Data.AddContext(new List<RsContext> { context });
             var jsonpre = RsJsonWritter.SerializeRsEntity(rsentity);
 
