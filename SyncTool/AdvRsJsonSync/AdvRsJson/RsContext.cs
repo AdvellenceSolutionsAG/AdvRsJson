@@ -28,5 +28,12 @@ namespace AdvRsJson
             ContextRelations.Add(name, relation);
         }
 
+        public void AddContext(string contextname, string contextvalue)
+        {
+            ContextName = ContextName == null ? new Dictionary<string, string>() : ContextName;
+            ContextName.Add(contextname, contextvalue);
+        }
+
+
     }
 }

@@ -65,16 +65,9 @@ namespace UnitTestAdvRsJson
             //hair3.AddChild("hairtext", new RsAttribute(new RsValue("Scalp", "CRM", "en_WW")));
             //hair3.AddChild("hairrank", new RsAttribute(new RsValue("1", "CRM", "en_WW")));
 
-            RsRelationship relation = new RsRelationship();
-            relation.AddRelationshipAttribute("amount", new RsAttribute("1"));
-            relation.AddRelationshipAttribute("price", new RsAttribute("1000"));
-
-            rsentity.Data.AddRelationship("bom", new List<RsRelationship>() { relation });
-
-            
-
             RsContext context = new RsContext();
             context.ContextName = new Dictionary<string, string> { {"Country", "Germany" } };
+            context.ContextName.Add( "classification", "NIVEA>>NIVEA Baby" );
             context.AddContextAttributes("general", new RsAttribute("hello", "internal", "de-DE"));
             context.AddContextAttributes("general1", new RsAttribute("hello1", "internal", "de-DE"));
             context.AddContextAttributes("general2", new RsAttribute("hello2", "internal", "de-DE"));
@@ -102,6 +95,7 @@ namespace UnitTestAdvRsJson
             var json = RsJsonWritter.SerializeRsEntity(jsonroot);
             var convert = RsJsonWritter.DeserializeRsEntity(json.ToString());
         }
+
 
         [TestMethod]
         public void TestMethodCreateBinaryObject()
@@ -133,6 +127,91 @@ namespace UnitTestAdvRsJson
             //entity.Data.AddImageFromString("ew0KICAgImlkIjogIjEiLA");
             //string json = RsJsonWritter.SerializeRsBlob(entity);
         }
+
+
+        [TestMethod]
+        public void TestMethodCreateRealtionShip()
+        {
+            RsEntity rsentity = new RsEntity();
+            rsentity.Id = "e1";
+            rsentity.Type = "enart";
+            rsentity.Properties = new RsEntityProperties
+            {
+                Source = "plm",
+                CreatedByService = "plm",
+                CreatedBy = "ARI",
+                CreatedDate = "2016-07-16T18:10:52.412-07:00",
+                ModifiedByService = "plm",
+                ModifiedBy = "alr",
+                ModifiedDate = "2016-07-16T18:10:52.412-07:00",
+            };
+
+
+            RsAttribute inci = new RsAttribute(false);
+            inci.AddValue(new RsValue("aqua", "d2p", "en_WW"));
+            inci.AddValue(new RsValue("agua", "d2p", "es_ES"));
+            inci.AddValue(new RsValue("Wasser", "d2p", "de_DE"));
+
+            RsAttribute hair = new RsAttribute(true);
+
+            Dictionary<string, RsAttribute> firstentry = new Dictionary<string, RsAttribute>();
+            firstentry.Add("hairtext", new RsAttribute(new RsValue("Scalp1", "CRM", "en_WW")));
+            firstentry.Add("hairrank", new RsAttribute(new RsValue("1", "CRM", "en_WW")));
+
+            Dictionary<string, RsAttribute> secondtentry = new Dictionary<string, RsAttribute>();
+            secondtentry.Add("hairtext", new RsAttribute(new RsValue("Scalp2", "CRM", "en_WW")));
+            secondtentry.Add("hairrank", new RsAttribute(new RsValue("2", "CRM", "en_WW")));
+
+            Dictionary<string, RsAttribute> thirdentry = new Dictionary<string, RsAttribute>();
+            thirdentry.Add("hairtext", new RsAttribute(new RsValue("Scalp3", "CRM", "en_WW")));
+            thirdentry.Add("hairrank", new RsAttribute(new RsValue("3", "CRM", "en_WW")));
+
+            hair.AddNestedAttributeRow(firstentry);
+            hair.AddNestedAttributeRow(secondtentry);
+            hair.AddNestedAttributeRow(thirdentry);
+
+            RsContext context = new RsContext();
+            context.ContextName = new Dictionary<string, string> { { "Country", "Germany" } };
+            context.AddContextAttributes("general", new RsAttribute("hello", "internal", "de-DE"));
+            context.AddContextAttributes("general1", new RsAttribute("hello1", "internal", "de-DE"));
+            context.AddContextAttributes("general2", new RsAttribute("hello2", "internal", "de-DE"));
+            context.AddContextAttributes("general3", new RsAttribute("hello3", "internal", "de-DE"));
+            context.AddContextAttributes("general4", new RsAttribute("hello4", "internal", "de-DE"));
+            context.AddContextAttributes("general5", new RsAttribute("hello5", "internal", "de-DE"));
+            context.AddContextAttributes("general6", new RsAttribute("hello6", "internal", "de-DE"));
+            rsentity.Data.AddAttributes("inci", inci);
+            rsentity.Data.AddAttributes("hair", hair);
+
+            rsentity.Data.AddContext(new List<RsContext> { context });
+            var jsonpre = RsJsonWritter.SerializeRsEntity(rsentity);
+
+            RsRelationship relation = new RsRelationship();
+            relation.RelationshipId = "53w";
+            relation.RelationProperties = new RsRelationshipsProperties {
+                RelationShipType =  RsRelationshipsProperties.Type.composition.ToString(),
+                RelationShipDirection = RsRelationshipsProperties.Direction.both.ToString(),
+                
+            };
+            relation.RelationTo = new RsRelTo
+            {
+                EntityType = "eproductversion",
+                Id = "15515"
+            };
+
+            rsentity.Data.AddRelationship("rchildof", new List<RsRelationship> { relation });
+
+
+            var jsonroot = new
+            {
+                entity = rsentity,
+            };
+
+            var json = RsJsonWritter.SerializeRsEntity(jsonroot);
+            var convert = RsJsonWritter.DeserializeRsEntity(json.ToString());
+
+
+        }
+
 
         [TestMethod]
         public void TestMethodDeserialize()

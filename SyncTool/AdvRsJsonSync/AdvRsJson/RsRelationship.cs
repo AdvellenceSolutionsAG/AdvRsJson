@@ -5,29 +5,25 @@ namespace AdvRsJson
 {
     public class RsRelationship
     {
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore , Order = 1)]
         public string RelationshipId { get; set; }
 
-        [JsonProperty("direction", NullValueHandling = NullValueHandling.Ignore)]
-        public string Direction { get; set; }
 
         [JsonProperty("source", NullValueHandling = NullValueHandling.Ignore)]
         public string Source { get; set; }
 
-        [JsonProperty("timestamp", NullValueHandling = NullValueHandling.Ignore)]
-        public float Timestamp { get; set; }
 
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-        public string Relationshiptype { get; set; }
-
-        [JsonProperty("attributes", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("attributes", NullValueHandling = NullValueHandling.Ignore, Order = 5)]
         public Dictionary<string, RsAttribute> RelationshipAttributes { get; set; }
 
-        [JsonProperty("relationships", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("relationships", NullValueHandling = NullValueHandling.Ignore, Order = 4)]
         public Dictionary<string, List<RsRelationship>> NestedRelationships { get; set; }
 
-        [JsonProperty("relTo", NullValueHandling = NullValueHandling.Ignore)]
-        public Dictionary<string, RsRelTo> RelationTo { get; set; }
+        [JsonProperty("relTo", NullValueHandling = NullValueHandling.Ignore, Order = 3)]
+        public RsRelTo RelationTo { get; set; }
+
+        [JsonProperty("properties", NullValueHandling = NullValueHandling.Ignore, Order = 2)]
+        public  RsRelationshipsProperties RelationProperties { get; set; }
 
 
         public void AddRelationshipAttribute(string name, RsAttribute attribute)
@@ -43,14 +39,6 @@ namespace AdvRsJson
                 NestedRelationships = new Dictionary<string, List<RsRelationship>>();
             NestedRelationships.Add(name, relationship);
         }
-
-        public void AddRelationTo(string name, RsRelTo relto)
-        {
-            if (RelationTo == null)
-                RelationTo = new Dictionary<string, RsRelTo>();
-            RelationTo.Add(name, relto);
-        }
-
 
 
         public enum RelationshipType
