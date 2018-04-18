@@ -5,7 +5,6 @@ namespace AdvRsJson
 {
     public class RsAttribute
     {
-
         public RsAttribute(RsValue value)
         {
             AddValue(value);
@@ -18,11 +17,15 @@ namespace AdvRsJson
         }
         public RsAttribute(string value, string source = "internal", string locale = "en-US")
         {
-            AddValue(new RsValue(
-                value = value,
-                source = source,                
-                locale = locale));
-            IsNested = false;
+            if ( string.IsNullOrEmpty(value) )
+            {
+
+            }
+            else
+            {
+                AddValue(new RsValue(value, source, locale));
+                IsNested = false;
+            }
         }
         public RsAttribute(bool isnested)
         {
@@ -33,11 +36,15 @@ namespace AdvRsJson
             IsNested = false;
         }
 
+        public override string ToString()
+        {
+            return AttributeValues == null && Group == null ? "My test value" : "Object.ToString()";
+        }
 
-        [JsonProperty("group",NullValueHandling = NullValueHandling.Ignore)]
-        public List<Dictionary<string, RsAttribute>> Group { get; set; }
+        [JsonProperty("group", NullValueHandling = NullValueHandling.Ignore)]
+        public List<Dictionary<string, object>> Group { get; set; }
+        //public List<Dictionary<string, object>> Group { get; set; }
 
-        
         [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
         public List<RsValue> AttributeValues { get; set; }
 
@@ -72,15 +79,22 @@ namespace AdvRsJson
         //    IsNested = false;
         //}
 
-        public void AddNestedAttributeRow(Dictionary<string, RsAttribute> dict)
+        public void AddNestedAttributeRow(Dictionary<string, RsAttribute> nestedValues, string locale = null, string source = null)
         {
-            Group = (Group == null) ? new List<Dictionary<string, RsAttribute>>() : Group;
-            Group.Add(dict);
+            Group = (Group == null ? new List<Dictionary<string, object>>() : Group);
+
+            Dictionary<string, object> values = new Dictionary<string, object>();
+            values.Add("locale", (string.IsNullOrEmpty(locale) ? "en-US" : locale));
+            values.Add("source", (string.IsNullOrEmpty(source) ? "internal" : source));
+
+            foreach (string key in nestedValues.Keys)
+            {
+                values.Add(key, nestedValues[key]);
+            }
+            Group.Add(values);
+
             IsChild = true;
             IsNested = false;
-
         }
-        
-
     }
 }
