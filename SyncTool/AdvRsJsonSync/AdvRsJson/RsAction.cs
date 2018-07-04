@@ -39,5 +39,15 @@ namespace AdvRsJson
             else
                 throw new InvalidCastException();
         }
+
+        public static RsAction ValueOf(string str)
+        {
+            if (string.IsNullOrEmpty(str)) return null;
+            RsAction result;
+            if (m_instance.TryGetValue(str, out result))
+                return result;
+            else
+                throw new InvalidCastException();
+        }
     }
 }

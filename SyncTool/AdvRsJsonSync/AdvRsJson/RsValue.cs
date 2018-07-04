@@ -10,7 +10,7 @@ namespace AdvRsJson
         /// <param name="action">The action for the given value.</param>
         public RsValue(RsAction action, string val = null, string loc = null, string sou = null, string unitofm = null)
         {
-            this.action = action;
+            m_Action = action;
             this.Value = val;
             this.Source = sou;
             this.Locale = loc;
@@ -19,7 +19,7 @@ namespace AdvRsJson
 
         public RsValue(string val, string sou, string loc)
         {
-            action = null;
+            m_Action = null;
             this.Value = val;
             this.Source = sou;
             this.Locale = loc;
@@ -27,14 +27,14 @@ namespace AdvRsJson
 
         public RsValue(string val, string loc)
         {
-            action = null;
+            m_Action = null;
             this.Value = val;
             this.Locale = loc;
         }
 
         public RsValue(string val, string loc, string sou, string unitofm)
         {
-            action = null;
+            m_Action = null;
             this.Value = val;
             this.Source = sou;
             this.Locale = loc;
@@ -43,11 +43,12 @@ namespace AdvRsJson
 
         public RsValue()
         {
-            action = null;
+            m_Action = null;
         }
 
         [JsonProperty("action", NullValueHandling = NullValueHandling.Ignore, Order = 1)]
-        public RsAction action { get; set; }
+        public string Action { get { return m_Action == null ? null : m_Action.ToString(); } set { m_Action = RsAction.ValueOf(value); } }
+        private RsAction m_Action { get; set; }
         [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore, Order = 2)]
         public string Value { get; set; }
         [JsonProperty("source", NullValueHandling = NullValueHandling.Ignore, Order = 3)]
