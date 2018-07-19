@@ -49,7 +49,8 @@ namespace AdvRsJson
         public List<RsValue> AttributeValues { get; set; }
 
         [JsonProperty("action", NullValueHandling = NullValueHandling.Ignore)]
-        public RsAction Action { get; set; }
+        public string Action { get { return m_Action == null ? null : m_Action.ToString(); } set { m_Action = RsAction.ValueOf(value); } }
+        private RsAction m_Action { get; set; }
 
         [JsonIgnore]
         public bool IsNested { set; get; }
@@ -101,7 +102,12 @@ namespace AdvRsJson
 
         public void FlagForDeletion()
         {
-            Action = RsAction.DELETE;
+            m_Action = RsAction.DELETE;
+        }
+
+        public bool IsFlaggedForDeletion()
+        {
+            return m_Action == RsAction.DELETE;
         }
     }
 }
