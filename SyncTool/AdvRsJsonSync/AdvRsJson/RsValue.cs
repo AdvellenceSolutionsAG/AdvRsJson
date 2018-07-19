@@ -8,13 +8,20 @@ namespace AdvRsJson
         /// Currently the only action used is "delete", which is why (by default) it is set to <code>null</code> in all other constructors.
         /// </summary>
         /// <param name="action">The action for the given value.</param>
-        public RsValue(RsAction action, string val = null, string loc = null, string sou = null, string unitofm = null)
+        public RsValue(RsAction action, string value = null, string locale = null, string source = null, string uom = null)
         {
             m_Action = action;
-            this.Value = val;
-            this.Source = sou;
-            this.Locale = loc;
-            this.Uom = unitofm;
+            this.Value = value;
+            this.Source = source;
+            this.Locale = locale;
+            this.Uom = uom;
+        }
+
+        public RsValue(RsAction action, string locale, string source)
+        {
+            m_Action = action;
+            this.Source = source;
+            this.Locale = locale;
         }
 
         public RsValue(string val, string sou, string loc)

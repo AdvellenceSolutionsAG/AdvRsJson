@@ -48,12 +48,14 @@ namespace AdvRsJson
         [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
         public List<RsValue> AttributeValues { get; set; }
 
+        [JsonProperty("action", NullValueHandling = NullValueHandling.Ignore)]
+        public RsAction Action { get; set; }
+
         [JsonIgnore]
         public bool IsNested { set; get; }
 
         [JsonIgnore]
         public bool IsChild { set; get; }
-
 
         public void AddValue(RsValue value)
         {
@@ -95,6 +97,11 @@ namespace AdvRsJson
 
             IsChild = true;
             IsNested = false;
+        }
+
+        public void FlagForDeletion()
+        {
+            Action = RsAction.DELETE;
         }
     }
 }
