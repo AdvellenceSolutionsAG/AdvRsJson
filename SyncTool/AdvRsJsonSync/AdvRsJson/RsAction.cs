@@ -17,6 +17,7 @@ namespace AdvRsJson
         private static readonly Dictionary<string, RsAction> m_instance = new Dictionary<string, RsAction>();
 
         public static readonly RsAction DELETE = new RsAction("delete");
+        public static readonly RsAction REPLACE = new RsAction("replace");
         //public static readonly RsAction CREATE = new RsAction("create");
         //public static readonly RsAction IGNORE = new RsAction("ignore");
 
